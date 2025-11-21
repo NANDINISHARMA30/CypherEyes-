@@ -17,7 +17,7 @@ interface XAINotificationToastProps {
 const XAINotificationToast: React.FC<XAINotificationToastProps> = ({ onOpenTicketManager }) => {
   const [notifications, setNotifications] = useState<XAINotification[]>([]);
   const [currentNotification, setCurrentNotification] = useState<XAINotification | null>(null);
-  const [isNotificationsEnabled, setIsNotificationsEnabled] = useState(true);
+  const [isNotificationsEnabled, setIsNotificationsEnabled] = useState(false); // Default to false - no popups
   const [lastNotificationTime, setLastNotificationTime] = useState<number>(0);
 
   // Demo notifications
@@ -49,22 +49,23 @@ const XAINotificationToast: React.FC<XAINotificationToastProps> = ({ onOpenTicke
   ];
 
   useEffect(() => {
-    // Schedule demo notifications
-    demoNotifications.forEach((notif, index) => {
-      setTimeout(() => {
-        setNotifications(prev => [...prev, notif]);
-        setCurrentNotification(notif);
-        
-        // Auto-hide after 8 seconds
-        setTimeout(() => {
-          setCurrentNotification(null);
-        }, 8000);
-      }, index * 15000); // 15 seconds apart
-    });
+    if (!isNotificationsEnabled) return;
 
-    // Simulate random new notifications
+    // Schedule demo notifications (only show first one)
+    if (demoNotifications.length > 0) {
+      const firstNotif = demoNotifications[0];
+      setTimeout(() => {
+        showNotification(firstNotif);
+      }, 5000); // Show first notification after 5 seconds
+    }
+
+    // Simulate random new notifications (much less frequent)
     const interval = setInterval(() => {
-      if (Math.random() < 0.2) { // 20% chance every 30 seconds
+      if (!isNotificationsEnabled) return;
+      
+      const now = Date.now();
+      // Only show notification if at least 2 minutes have passed since last one
+      if (Math.random() < 0.1 && (now - lastNotificationTime > 120000)) { // 10% chance every 60 seconds, min 2 minutes apart
         const randomNotif: XAINotification = {
           id: `notif-${Date.now()}`,
           title: ['Port Scan Detected', 'Brute Force Attempt', 'Malware Communication'][Math.floor(Math.random() * 3)],
@@ -74,17 +75,23 @@ const XAINotificationToast: React.FC<XAINotificationToastProps> = ({ onOpenTicke
           packetId: `XAI-${Date.now()}`
         };
         
-        setNotifications(prev => [...prev, randomNotif]);
-        setCurrentNotification(randomNotif);
-        
-        setTimeout(() => {
-          setCurrentNotification(null);
-        }, 8000);
+        showNotification(randomNotif);
       }
-    }, 30000);
+    }, 60000); // Check every 60 seconds instead of 30
 
     return () => clearInterval(interval);
-  }, []);
+  }, [isNotificationsEnabled, lastNotificationTime]);
+
+  const showNotification = (notif: XAINotification) => {
+    setNotifications(prev => [...prev, notif]);
+    setCurrentNotification(notif);
+    setLastNotificationTime(Date.now());
+    
+    // Auto-hide after 10 seconds (increased from 8)
+    setTimeout(() => {
+      setCurrentNotification(null);
+    }, 10000);
+  };
 
   const handleDismiss = () => {
     setCurrentNotification(null);
@@ -94,6 +101,27 @@ const XAINotificationToast: React.FC<XAINotificationToastProps> = ({ onOpenTicke
     onOpenTicketManager();
     setCurrentNotification(null);
   };
+
+  const handleDisableNotifications = () => {
+    setIsNotificationsEnabled(false);
+    setCurrentNotification(null);
+    // Store preference in localStorage
+    localStorage.setItem('xai-notifications-enabled', 'false');
+  };
+
+  const handleEnableNotifications = () => {
+    setIsNotificationsEnabled(true);
+    localStorage.setItem('xai-notifications-enabled', 'true');
+  };
+
+  // Check localStorage on component mount - default to disabled
+  useEffect(() => {
+    const stored = localStorage.getItem('xai-notifications-enabled');
+    // Only enable if explicitly set to 'true'
+    if (stored === 'true') {
+      setIsNotificationsEnabled(true);
+    }
+  }, []);
 
   const getSeverityColor = (severity: string) => {
     switch (severity) {
@@ -162,6 +190,14 @@ const XAINotificationToast: React.FC<XAINotificationToastProps> = ({ onOpenTicke
               className="px-3 py-2 text-xs font-medium text-gray-600 hover:text-gray-800 transition-colors"
             >
               Dismiss
+            </button>
+          </div>
+          <div className="mt-2 pt-2 border-t border-gray-200">
+            <button
+              onClick={handleDisableNotifications}
+              className="text-xs text-gray-500 hover:text-gray-700 transition-colors"
+            >
+              Don't show popup notifications
             </button>
           </div>
         </div>
