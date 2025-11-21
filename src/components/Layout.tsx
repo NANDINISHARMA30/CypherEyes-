@@ -11,12 +11,22 @@ interface LayoutProps {
 
 export default function Layout({ children, currentPage = 'Dashboard' }: LayoutProps) {
   const [showTicketManager, setShowTicketManager] = useState(false);
+  const [notificationsEnabled, setNotificationsEnabled] = useState(
+    localStorage.getItem('xai-notifications-enabled') === 'true' // Only true if explicitly enabled
+  );
+
+  const toggleNotifications = () => {
+    const newState = !notificationsEnabled;
+    setNotificationsEnabled(newState);
+    localStorage.setItem('xai-notifications-enabled', newState.toString());
+  };
 
   return (
     <div className="min-h-screen bg-slate-50 flex flex-col">
       <NavigationBar 
         currentPage={currentPage} 
         onOpenXAITickets={() => setShowTicketManager(true)}
+        onToggleNotifications={toggleNotifications}
       />
       <main className="flex-1 p-6">
         <div className="max-w-[1400px] mx-auto">
@@ -26,7 +36,9 @@ export default function Layout({ children, currentPage = 'Dashboard' }: LayoutPr
       <Footer />
       
       {/* XAI Notification System */}
-      <XAINotificationToast onOpenTicketManager={() => setShowTicketManager(true)} />
+      {notificationsEnabled && (
+        <XAINotificationToast onOpenTicketManager={() => setShowTicketManager(true)} />
+      )}
       <XAITicketManager 
         isOpen={showTicketManager} 
         onClose={() => setShowTicketManager(false)} 

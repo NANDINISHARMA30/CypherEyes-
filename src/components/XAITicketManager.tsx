@@ -180,11 +180,11 @@ const XAITicketManager: React.FC<XAITicketManagerProps> = ({ isOpen, onClose }) 
   const [selectedPacket, setSelectedPacket] = useState<FlaggedPacket | null>(null);
   const [showTicketDetails, setShowTicketDetails] = useState(false);
 
-  // Simulate new packets being flagged
+  // Simulate new packets being flagged (much less frequent)
   useEffect(() => {
     const interval = setInterval(() => {
-      // Randomly add new flagged packets (demo purposes)
-      if (Math.random() < 0.3) { // 30% chance every 10 seconds
+      // Randomly add new flagged packets (demo purposes) - reduced frequency
+      if (Math.random() < 0.05) { // 5% chance every 2 minutes (was 30% every 10 seconds)
         const newPacket: FlaggedPacket = {
           id: `XAI-2024-${String(Date.now()).slice(-3)}`,
           timestamp: new Date().toISOString(),
@@ -215,7 +215,7 @@ const XAITicketManager: React.FC<XAITicketManagerProps> = ({ isOpen, onClose }) 
         
         setFlaggedPackets(prev => [newPacket, ...prev.slice(0, 9)]); // Keep only 10 most recent
       }
-    }, 10000); // Check every 10 seconds
+    }, 120000); // Check every 2 minutes instead of 10 seconds
 
     return () => clearInterval(interval);
   }, []);
