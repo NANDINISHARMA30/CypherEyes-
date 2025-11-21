@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { Settings as SettingsIcon, Database, Shield, RefreshCw } from 'lucide-react';
 
 export default function SettingsPage() {
-  const [anomalyThreshold, setAnomalyThreshold] = useState(0.75);
   const [zeroDay, setZeroDay] = useState(true);
   const [liveCapture, setLiveCapture] = useState(true);
   const [dataSource, setDataSource] = useState('pcap');
@@ -16,56 +15,25 @@ export default function SettingsPage() {
         </div>
 
         <div className="space-y-6">
-          <div>
-            <div className="flex items-center justify-between mb-3">
-              <label className="text-sm font-semibold text-gray-700">
-                Anomaly Detection Threshold
-              </label>
-              <span className="text-lg font-bold text-sky-600">
-                {anomalyThreshold.toFixed(2)}
-              </span>
+          <div className="flex items-center justify-between">
+            <div>
+              <h3 className="text-sm font-semibold text-gray-700">Zero-Day Detection</h3>
+              <p className="text-sm text-gray-600 mt-1">
+                Enable advanced heuristics for detecting unknown threats
+              </p>
             </div>
-            <input
-              type="range"
-              min="0"
-              max="1"
-              step="0.01"
-              value={anomalyThreshold}
-              onChange={(e) => setAnomalyThreshold(parseFloat(e.target.value))}
-              className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-sky-500"
-            />
-            <div className="flex justify-between text-xs text-gray-500 mt-2">
-              <span>Sensitive (0.0)</span>
-              <span>Balanced (0.5)</span>
-              <span>Strict (1.0)</span>
-            </div>
-            <p className="text-sm text-gray-600 mt-3">
-              Lower values detect more anomalies but may increase false positives. Higher values
-              are more conservative.
-            </p>
-          </div>
-
-          <div className="border-t border-gray-200 pt-6">
-            <div className="flex items-center justify-between">
-              <div>
-                <h3 className="text-sm font-semibold text-gray-700">Zero-Day Detection</h3>
-                <p className="text-sm text-gray-600 mt-1">
-                  Enable advanced heuristics for detecting unknown threats
-                </p>
-              </div>
-              <button
-                onClick={() => setZeroDay(!zeroDay)}
-                className={`relative inline-flex h-8 w-14 items-center rounded-full transition-colors ${
-                  zeroDay ? 'bg-sky-500' : 'bg-gray-300'
+            <button
+              onClick={() => setZeroDay(!zeroDay)}
+              className={`relative inline-flex h-8 w-14 items-center rounded-full transition-colors ${
+                zeroDay ? 'bg-sky-500' : 'bg-gray-300'
+              }`}
+            >
+              <span
+                className={`inline-block h-6 w-6 transform rounded-full bg-white transition-transform ${
+                  zeroDay ? 'translate-x-7' : 'translate-x-1'
                 }`}
-              >
-                <span
-                  className={`inline-block h-6 w-6 transform rounded-full bg-white transition-transform ${
-                    zeroDay ? 'translate-x-7' : 'translate-x-1'
-                  }`}
-                />
-              </button>
-            </div>
+              />
+            </button>
           </div>
         </div>
       </div>
