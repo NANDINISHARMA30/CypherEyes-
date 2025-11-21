@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Settings as SettingsIcon, Database, Shield, RefreshCw } from 'lucide-react';
+import Layout from '../components/Layout';
 
 export default function SettingsPage() {
   const [zeroDay, setZeroDay] = useState(true);
@@ -7,7 +8,8 @@ export default function SettingsPage() {
   const [dataSource, setDataSource] = useState('pcap');
 
   return (
-    <div className="space-y-6">
+    <Layout currentPage="Settings">
+      <div className="space-y-6">
       <div className="bg-white rounded-2xl shadow-md p-6">
         <div className="flex items-center space-x-3 mb-6">
           <Shield className="w-8 h-8 text-sky-500" />
@@ -142,6 +144,7 @@ export default function SettingsPage() {
           </div>
         </div>
       </div>
-    </div>
+      </div>
+    </Layout>
   );
 }

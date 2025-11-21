@@ -1,10 +1,9 @@
+import Layout from '../components/Layout';
 import { UserActivity } from '../types';
+import { generateMockUsers } from '../utils/mockData';
 
-interface UserBehaviourPageProps {
-  users: UserActivity[];
-}
-
-export default function UserBehaviourPage({ users }: UserBehaviourPageProps) {
+export default function UserBehaviourPage() {
+  const users = generateMockUsers();
   const getRiskColor = (level: string) => {
     switch (level) {
       case 'high':
@@ -58,7 +57,8 @@ export default function UserBehaviourPage({ users }: UserBehaviourPageProps) {
   };
 
   return (
-    <div className="space-y-6">
+    <Layout currentPage="User Behaviour">
+      <div className="space-y-6">
       <div className="bg-white rounded-2xl shadow-md p-6">
         <h2 className="text-2xl font-bold text-slate-900 mb-6">User Activity Heatmap</h2>
         <div className="overflow-x-auto">
@@ -171,6 +171,7 @@ export default function UserBehaviourPage({ users }: UserBehaviourPageProps) {
           </table>
         </div>
       </div>
-    </div>
+      </div>
+    </Layout>
   );
 }
