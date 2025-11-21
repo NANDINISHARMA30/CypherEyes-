@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import Layout from '../components/Layout';
 import SummaryCards from '../components/SummaryCards';
 import TrafficGraph from '../components/TrafficGraph';
 import ProtocolChart from '../components/ProtocolChart';
@@ -40,15 +41,17 @@ export default function DashboardPage() {
   }, []);
 
   return (
-    <div className="space-y-6">
-      <SummaryCards metrics={metrics} />
+    <Layout currentPage="Dashboard">
+      <div className="space-y-6">
+        <SummaryCards metrics={metrics} />
 
-      <div className="grid grid-cols-3 gap-6">
-        <TrafficGraph data={trafficData} />
-        <ProtocolChart data={protocols} />
+        <div className="grid grid-cols-3 gap-6">
+          <TrafficGraph data={trafficData} />
+          <ProtocolChart data={protocols} />
+        </div>
+
+        <FlowTable flows={flows} />
       </div>
-
-      <FlowTable flows={flows} />
-    </div>
+    </Layout>
   );
 }

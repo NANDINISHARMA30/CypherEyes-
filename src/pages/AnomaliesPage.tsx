@@ -1,12 +1,11 @@
 import { useState } from 'react';
 import { X } from 'lucide-react';
+import Layout from '../components/Layout';
 import { AnomalyData } from '../types';
+import { generateMockAnomalies } from '../utils/mockData';
 
-interface AnomaliesPageProps {
-  anomalies: AnomalyData[];
-}
-
-export default function AnomaliesPage({ anomalies }: AnomaliesPageProps) {
+export default function AnomaliesPage() {
+  const anomalies = generateMockAnomalies();
   const [selectedAnomaly, setSelectedAnomaly] = useState<AnomalyData | null>(null);
   const [activeFilter, setActiveFilter] = useState<string>('all');
 
@@ -37,7 +36,8 @@ export default function AnomaliesPage({ anomalies }: AnomaliesPageProps) {
   };
 
   return (
-    <div className="space-y-6">
+    <Layout currentPage="Anomalies">
+      <div className="space-y-6">
       <div className="bg-white rounded-2xl shadow-md p-6">
         <div className="flex items-center justify-between mb-6">
           <h2 className="text-2xl font-bold text-slate-900">Anomaly Detection</h2>
@@ -222,6 +222,7 @@ export default function AnomaliesPage({ anomalies }: AnomaliesPageProps) {
           </div>
         </div>
       )}
-    </div>
+      </div>
+    </Layout>
   );
 }

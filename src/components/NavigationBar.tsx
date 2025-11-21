@@ -1,32 +1,46 @@
 import { Shield, User } from 'lucide-react';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 interface NavigationBarProps {
-  currentPage: string;
-  onNavigate: (page: string) => void;
+  currentPage?: string;
 }
 
-export default function NavigationBar({ currentPage, onNavigate }: NavigationBarProps) {
-  const tabs = ['Dashboard', 'Live Traffic', 'Anomalies', 'User Behaviour', 'Settings'];
+export default function NavigationBar({ currentPage }: NavigationBarProps) {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const tabs = [
+    { name: 'Dashboard', path: '/dashboard' },
+    { name: 'Live Traffic', path: '/live-traffic' },
+    { name: 'Anomalies', path: '/anomalies' },
+    { name: 'User Behaviour', path: '/user-behaviour' },
+    { name: 'Settings', path: '/settings' }
+  ];
+
+  const getCurrentTab = () => {
+    const currentTab = tabs.find(tab => tab.path === location.pathname);
+    return currentTab ? currentTab.name : currentPage || 'Dashboard';
+  };
 
   return (
     <nav className="bg-slate-900 h-[70px] shadow-md flex items-center justify-between px-8">
       <div className="flex items-center space-x-2">
         <Shield className="w-8 h-8 text-sky-400" />
-        <h1 className="text-white text-xl font-bold">IDS Monitor</h1>
+        <h1 className="text-white text-xl font-bold">CypherEyes</h1>
       </div>
 
       <div className="flex space-x-8">
         {tabs.map((tab) => (
           <button
-            key={tab}
-            onClick={() => onNavigate(tab)}
+            key={tab.name}
+            onClick={() => navigate(tab.path)}
             className={`text-white font-semibold transition-all duration-200 hover:text-sky-400 border-b-2 ${
-              currentPage === tab
+              getCurrentTab() === tab.name
                 ? 'border-sky-400 text-sky-400'
                 : 'border-transparent'
             }`}
           >
-            {tab}
+            {tab.name}
           </button>
         ))}
       </div>
