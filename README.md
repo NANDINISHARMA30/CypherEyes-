@@ -7,30 +7,63 @@ The system integrates signature-based detection, supervised machine learning, un
 
 🧠 Why CypherEyes?
 
-Modern networks face rapidly evolving threats:
+-Modern networks face rapidly evolving threats:
 
-Zero-day exploits
+-Zero-day exploits
 
-Insider-driven anomalies
+-Insider-driven anomalies
 
-Multi-stage intrusion attempts
+-Multi-stage intrusion attempts
 
-Dynamic attack patterns
+-Dynamic attack patterns
 
-Traditional IDS systems fail against unknown threats and generate excessive false positives.
+-Traditional IDS systems fail against unknown threats and generate excessive false positives.
 
 CypherEyes solves these challenges using a dual-layer hybrid pipeline that is robust, low-noise, and fully explainable.
 
-⚠️ Problem Statement
+## ⚠️ Problem Statement
 
-Existing IDS solutions struggle with:
+-Existing IDS solutions struggle with:
 
-Detecting zero-day attacks
+-Detecting zero-day attacks
 
-High false positives
+-High false positives
 
-Lack of reasoning behind alerts
+-Lack of reasoning behind alerts
 
-Limited adaptability to evolving threats
+-Limited adaptability to evolving threats
 
-There is a strong need for an accurate, low-noise, and transparent IDS.
+--There is a strong need for an accurate, low-noise, and transparent IDS.
+
+## Architecture Workflow
+
+               ┌────────────────────────┐
+               │      Data Ingestion    │
+               └────────────┬───────────┘
+                            ↓
+                 ┌──────────────────────┐
+                 │ Signature Database    │
+                 └───────┬──────────────┘
+                         │No Match
+                         ↓
+      ┌────────────────────────────────────────────┐
+      │         Ensemble ML Evaluation             │
+      │────────────────────────────────────────────│
+      │ Random Forest      → Anomaly Score         │
+      │ XGBoost            → Pattern Detection     │
+      │ Autoencoder        → Reconstruction Error  │
+      │ Isolation Forest   → Outlier Score         │
+      └────────────────────────────────────────────┘
+                         ↓
+               ┌────────────────────────┐
+               │    Fusion Layer         │
+               └────────────┬───────────┘
+                            ↓
+               ┌────────────────────────┐
+               │        XAI Layer       │
+               └────────────┬───────────┘
+                            ↓
+               ┌────────────────────────┐
+               │ Final Threat Decision   │
+               └────────────────────────┘
+
