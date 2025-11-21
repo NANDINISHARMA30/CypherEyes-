@@ -7,7 +7,6 @@ import DashboardPage from './pages/DashboardPage';
 import LiveTrafficPage from './pages/LiveTrafficPage';
 import AnomaliesPage from './pages/AnomaliesPage';
 import UserBehaviourPage from './pages/UserBehaviourPage';
-import SettingsPage from './pages/SettingsPage';
 
 function App() {
   return (
@@ -21,7 +20,6 @@ function App() {
         <Route path="/live-traffic" element={<LiveTrafficPage />} />
         <Route path="/anomalies" element={<AnomaliesPage />} />
         <Route path="/user-behaviour" element={<UserBehaviourPage />} />
-        <Route path="/settings" element={<SettingsPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </Router>

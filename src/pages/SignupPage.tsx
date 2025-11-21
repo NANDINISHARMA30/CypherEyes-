@@ -42,19 +42,19 @@ export default function SignupPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-200 via-orange-300 to-amber-400 flex items-center justify-center px-4 py-8">
+    <div className="min-h-screen bg-gradient-to-br from-blue-200 via-indigo-300 to-blue-400 flex items-center justify-center px-4">
       <div className="max-w-md w-full">
         {/* Logo */}
         <div className="text-center mb-8">
           <div className="flex justify-center items-center space-x-2 mb-4">
-            <Shield className="w-12 h-12 text-orange-600" />
+            <Shield className="w-12 h-12 text-blue-600" />
             <span className="text-3xl font-bold text-gray-900">CypherEyes</span>
           </div>
           <p className="text-gray-700">Create your company account</p>
         </div>
 
         {/* Signup Form */}
-        <div className="bg-white/80 backdrop-blur-sm border border-orange-200/40 rounded-xl p-8 shadow-2xl">
+        <div className="bg-white/80 backdrop-blur-sm border border-blue-200/40 rounded-xl p-8 shadow-2xl">
           <form onSubmit={handleSignup} className="space-y-5">
             {error && (
               <div className="bg-red-500/10 border border-red-500/50 rounded-lg p-3 flex items-center space-x-2">
@@ -74,7 +74,7 @@ export default function SignupPage() {
                   name="companyName"
                   value={formData.companyName}
                   onChange={handleChange}
-                  className="w-full pl-10 pr-4 py-3 bg-white/50 border border-orange-200/60 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:border-orange-500/60 focus:bg-white/70"
+                  className="w-full pl-10 pr-4 py-3 bg-white/50 border border-blue-200/60 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:border-blue-500/60 focus:bg-white/70"
                   placeholder="Acme Corporation"
                 />
               </div>
@@ -91,7 +91,7 @@ export default function SignupPage() {
                   name="fullName"
                   value={formData.fullName}
                   onChange={handleChange}
-                  className="w-full pl-10 pr-4 py-3 bg-white/50 border border-orange-200/60 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:border-orange-500/60 focus:bg-white/70"
+                  className="w-full pl-10 pr-4 py-3 bg-white/50 border border-blue-200/60 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:border-blue-500/60 focus:bg-white/70"
                   placeholder="John Doe"
                 />
               </div>
@@ -108,7 +108,7 @@ export default function SignupPage() {
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full pl-10 pr-4 py-3 bg-white/50 border border-orange-200/60 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:border-orange-500/60 focus:bg-white/70"
+                  className="w-full pl-10 pr-4 py-3 bg-white/50 border border-blue-200/60 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:border-blue-500/60 focus:bg-white/70"
                   placeholder="you@company.com"
                 />
               </div>
@@ -125,7 +125,7 @@ export default function SignupPage() {
                   name="password"
                   value={formData.password}
                   onChange={handleChange}
-                  className="w-full pl-10 pr-4 py-3 bg-white/50 border border-orange-200/60 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:border-orange-500/60 focus:bg-white/70"
+                  className="w-full pl-10 pr-4 py-3 bg-white/50 border border-blue-200/60 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:border-blue-500/60 focus:bg-white/70"
                   placeholder="••••••••"
                 />
               </div>
@@ -142,7 +142,7 @@ export default function SignupPage() {
                   name="confirmPassword"
                   value={formData.confirmPassword}
                   onChange={handleChange}
-                  className="w-full pl-10 pr-4 py-3 bg-white/50 border border-orange-200/60 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:border-orange-500/60 focus:bg-white/70"
+                  className="w-full pl-10 pr-4 py-3 bg-white/50 border border-blue-200/60 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:border-blue-500/60 focus:bg-white/70"
                   placeholder="••••••••"
                 />
               </div>
@@ -150,7 +150,7 @@ export default function SignupPage() {
 
             <button
               type="submit"
-              className="w-full py-3 bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 text-white rounded-lg font-semibold transition-all shadow-lg"
+              className="w-full py-3 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white rounded-lg font-semibold transition-all shadow-lg"
             >
               Create Account
             </button>
@@ -160,7 +160,7 @@ export default function SignupPage() {
             <span className="text-gray-600">Already have an account? </span>
             <button
               onClick={() => navigate('/login')}
-              className="text-orange-600 hover:text-orange-700 font-semibold"
+              className="text-blue-600 hover:text-blue-700 font-semibold"
             >
               Sign in
             </button>

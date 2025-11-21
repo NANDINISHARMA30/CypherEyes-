@@ -74,7 +74,7 @@ export default function OnboardingPage() {
             <div className="space-y-6">
               <div>
                 <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center">
-                  <Server className="w-6 h-6 mr-2 text-orange-600" />
+                  <Server className="w-6 h-6 mr-2 text-blue-600" />
                   Network Information
                 </h3>
                 <p className="text-gray-700 mb-6">Tell us about your network infrastructure</p>
@@ -87,7 +87,7 @@ export default function OnboardingPage() {
                 <select
                   value={formData.networkSize}
                   onChange={(e) => setFormData({ ...formData, networkSize: e.target.value })}
-                  className="w-full px-4 py-3 bg-white/60 border border-orange-200/60 rounded-lg text-gray-900 focus:outline-none focus:border-orange-500/60 focus:bg-white/80"
+                  className="w-full px-4 py-3 bg-white/60 border border-blue-200/60 rounded-lg text-gray-900 focus:outline-none focus:border-blue-500/60 focus:bg-white/80"
                 >
                   <option value="">Select network size</option>
                   <option value="small">Small (1-50 devices)</option>
@@ -104,7 +104,7 @@ export default function OnboardingPage() {
                 <select
                   value={formData.trafficVolume}
                   onChange={(e) => setFormData({ ...formData, trafficVolume: e.target.value })}
-                  className="w-full px-4 py-3 bg-white/60 border border-orange-200/60 rounded-lg text-gray-900 focus:outline-none focus:border-orange-500/60 focus:bg-white/80"
+                  className="w-full px-4 py-3 bg-white/60 border border-blue-200/60 rounded-lg text-gray-900 focus:outline-none focus:border-blue-500/60 focus:bg-white/80"
                 >
                   <option value="">Select traffic volume</option>
                   <option value="low">Low (&lt; 1 GB/day)</option>
@@ -120,7 +120,7 @@ export default function OnboardingPage() {
             <div className="space-y-6">
               <div>
                 <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center">
-                  <Database className="w-6 h-6 mr-2 text-orange-600" />
+                  <Database className="w-6 h-6 mr-2 text-blue-600" />
                   Connect Your Data Source
                 </h3>
                 <p className="text-gray-700 mb-6">Choose how you want to send network data to CypherEyes</p>
@@ -131,11 +131,11 @@ export default function OnboardingPage() {
                   onClick={() => setFormData({ ...formData, dataSource: 'api' })}
                   className={`p-6 rounded-lg border-2 transition-all ${
                     formData.dataSource === 'api'
-                      ? 'border-orange-500 bg-orange-500/10'
-                      : 'border-orange-300/40 bg-white/60 hover:border-orange-400/60'
+                      ? 'border-blue-500 bg-blue-500/10'
+                      : 'border-blue-300/40 bg-white/60 hover:border-blue-400/60'
                   }`}
                 >
-                  <Cloud className="w-12 h-12 text-orange-600 mb-3" />
+                  <Cloud className="w-12 h-12 text-blue-600 mb-3" />
                   <h4 className="text-gray-900 font-semibold mb-2">API Integration</h4>
                   <p className="text-sm text-gray-700">Send data via REST API</p>
                 </button>
@@ -144,11 +144,11 @@ export default function OnboardingPage() {
                   onClick={() => setFormData({ ...formData, dataSource: 'syslog' })}
                   className={`p-6 rounded-lg border-2 transition-all ${
                     formData.dataSource === 'syslog'
-                      ? 'border-orange-500 bg-orange-500/10'
-                      : 'border-orange-300/40 bg-white/60 hover:border-orange-400/60'
+                      ? 'border-blue-500 bg-blue-500/10'
+                      : 'border-blue-300/40 bg-white/60 hover:border-blue-400/60'
                   }`}
                 >
-                  <Server className="w-12 h-12 text-orange-600 mb-3" />
+                  <Server className="w-12 h-12 text-blue-600 mb-3" />
                   <h4 className="text-gray-900 font-semibold mb-2">Syslog/PCAP</h4>
                   <p className="text-sm text-gray-700">Forward logs directly</p>
                 </button>
@@ -160,7 +160,7 @@ export default function OnboardingPage() {
             <div className="space-y-6">
               <div>
                 <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center">
-                  <Link className="w-6 h-6 mr-2 text-orange-600" />
+                  <Link className="w-6 h-6 mr-2 text-blue-600" />
                   API Configuration
                 </h3>
                 <p className="text-gray-700 mb-6">Connect your network monitoring tools</p>
@@ -174,7 +174,7 @@ export default function OnboardingPage() {
                   type="text"
                   value={formData.apiEndpoint}
                   onChange={(e) => setFormData({ ...formData, apiEndpoint: e.target.value })}
-                  className="w-full px-4 py-3 bg-white/60 border border-orange-200/60 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:border-orange-500/60 focus:bg-white/80"
+                  className="w-full px-4 py-3 bg-white/60 border border-blue-200/60 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:border-blue-500/60 focus:bg-white/80"
                   placeholder="https://your-network-monitor.com/api"
                 />
               </div>
@@ -187,7 +187,7 @@ export default function OnboardingPage() {
                   type="password"
                   value={formData.apiKey}
                   onChange={(e) => setFormData({ ...formData, apiKey: e.target.value })}
-                  className="w-full px-4 py-3 bg-white/60 border border-orange-200/60 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:border-orange-500/60 focus:bg-white/80"
+                  className="w-full px-4 py-3 bg-white/60 border border-blue-200/60 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:border-blue-500/60 focus:bg-white/80"
                   placeholder="Enter your API key"
                 />
               </div>
@@ -208,14 +208,14 @@ export default function OnboardingPage() {
               className={`px-6 py-3 rounded-lg font-semibold transition-all ${
                 currentStep === 1
                   ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
-                  : 'bg-white/70 text-gray-700 hover:bg-white/90 border border-orange-200'
+                  : 'bg-white/70 text-gray-700 hover:bg-white/90 border border-blue-200'
               }`}
             >
               Back
             </button>
             <button
               onClick={handleNext}
-              className="px-6 py-3 bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 text-white rounded-lg font-semibold transition-all shadow-lg"
+              className="px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white rounded-lg font-semibold transition-all shadow-lg"
             >
               {currentStep === 3 ? 'Complete Setup' : 'Next'}
             </button>
