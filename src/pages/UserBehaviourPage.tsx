@@ -37,77 +37,11 @@ export default function UserBehaviourPage() {
 
   const sortedUsers = [...users].sort((a, b) => b.activityScore - a.activityScore);
 
-  const generateHeatmapData = () => {
-    const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
-    const hours = Array.from({ length: 24 }, (_, i) => i);
-    return days.map((day) => ({
-      day,
-      hours: hours.map(() => Math.random())
-    }));
-  };
 
-  const heatmapData = generateHeatmapData();
-
-  const getHeatmapColor = (value: number) => {
-    if (value > 0.8) return 'bg-red-500';
-    if (value > 0.6) return 'bg-orange-400';
-    if (value > 0.4) return 'bg-yellow-400';
-    if (value > 0.2) return 'bg-blue-300';
-    return 'bg-blue-100';
-  };
 
   return (
     <Layout currentPage="User Behaviour">
       <div className="space-y-6">
-      <div className="bg-white rounded-2xl shadow-md p-6">
-        <h2 className="text-2xl font-bold text-slate-900 mb-6">User Activity Heatmap</h2>
-        <div className="overflow-x-auto">
-          <div className="inline-block min-w-full">
-            <div className="flex">
-              <div className="flex flex-col justify-around pr-2">
-                {heatmapData.map((row) => (
-                  <div key={row.day} className="text-xs text-gray-600 h-6 flex items-center">
-                    {row.day}
-                  </div>
-                ))}
-              </div>
-              <div>
-                <div className="flex space-x-1 mb-2">
-                  {Array.from({ length: 24 }, (_, i) => (
-                    <div key={i} className="text-xs text-gray-600 w-6 text-center">
-                      {i % 4 === 0 ? i : ''}
-                    </div>
-                  ))}
-                </div>
-                <div className="space-y-1">
-                  {heatmapData.map((row) => (
-                    <div key={row.day} className="flex space-x-1">
-                      {row.hours.map((value, i) => (
-                        <div
-                          key={i}
-                          className={`w-6 h-6 rounded ${getHeatmapColor(value)} transition-all hover:scale-110 cursor-pointer`}
-                          title={`${row.day} ${i}:00 - Activity: ${(value * 100).toFixed(0)}%`}
-                        />
-                      ))}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="flex items-center justify-center mt-6 space-x-4 text-sm">
-          <span className="text-gray-600">Low Activity</span>
-          <div className="flex space-x-1">
-            <div className="w-4 h-4 bg-blue-100 rounded"></div>
-            <div className="w-4 h-4 bg-blue-300 rounded"></div>
-            <div className="w-4 h-4 bg-yellow-400 rounded"></div>
-            <div className="w-4 h-4 bg-orange-400 rounded"></div>
-            <div className="w-4 h-4 bg-red-500 rounded"></div>
-          </div>
-          <span className="text-gray-600">High Activity</span>
-        </div>
-      </div>
 
       <div className="bg-white rounded-2xl shadow-md p-6">
         <h2 className="text-2xl font-bold text-slate-900 mb-6">Top Suspicious Users</h2>

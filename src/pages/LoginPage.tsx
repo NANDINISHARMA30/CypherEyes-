@@ -24,19 +24,19 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-200 via-orange-300 to-amber-400 flex items-center justify-center px-4">
+    <div className="min-h-screen bg-gradient-to-br from-blue-200 via-indigo-300 to-blue-400 flex items-center justify-center px-4">
       <div className="max-w-md w-full">
         {/* Logo */}
         <div className="text-center mb-8">
           <div className="flex justify-center items-center space-x-2 mb-4">
-            <Shield className="w-12 h-12 text-orange-600" />
+            <Shield className="w-12 h-12 text-blue-600" />
             <span className="text-3xl font-bold text-gray-900">CypherEyes</span>
           </div>
           <p className="text-gray-700">Sign in to your account</p>
         </div>
 
         {/* Login Form */}
-        <div className="bg-white/80 backdrop-blur-sm border border-orange-200/40 rounded-xl p-8 shadow-2xl">
+        <div className="bg-white/80 backdrop-blur-sm border border-blue-200/40 rounded-xl p-8 shadow-2xl">
           <form onSubmit={handleLogin} className="space-y-6">
             {error && (
               <div className="bg-red-500/10 border border-red-500/50 rounded-lg p-3 flex items-center space-x-2">
@@ -55,7 +55,7 @@ export default function LoginPage() {
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full pl-10 pr-4 py-3 bg-white/50 border border-orange-200/60 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:border-orange-500/60 focus:bg-white/70"
+                  className="w-full pl-10 pr-4 py-3 bg-white/50 border border-blue-200/60 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:border-blue-500/60 focus:bg-white/70"
                   placeholder="you@company.com"
                 />
               </div>
@@ -71,7 +71,7 @@ export default function LoginPage() {
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full pl-10 pr-4 py-3 bg-white/50 border border-orange-200/60 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:border-orange-500/60 focus:bg-white/70"
+                  className="w-full pl-10 pr-4 py-3 bg-white/50 border border-blue-200/60 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:border-blue-500/60 focus:bg-white/70"
                   placeholder="••••••••"
                 />
               </div>
@@ -79,17 +79,17 @@ export default function LoginPage() {
 
             <div className="flex items-center justify-between">
               <label className="flex items-center">
-                <input type="checkbox" className="w-4 h-4 rounded border-gray-400 text-orange-600 focus:ring-orange-500" />
+                <input type="checkbox" className="w-4 h-4 rounded border-gray-400 text-blue-600 focus:ring-blue-500" />
                 <span className="ml-2 text-sm text-gray-600">Remember me</span>
               </label>
-              <a href="#" className="text-sm text-orange-600 hover:text-orange-700">
+              <a href="#" className="text-sm text-blue-600 hover:text-blue-700">
                 Forgot password?
               </a>
             </div>
 
             <button
               type="submit"
-              className="w-full py-3 bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 text-white rounded-lg font-semibold transition-all shadow-lg"
+              className="w-full py-3 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white rounded-lg font-semibold transition-all shadow-lg"
             >
               Sign In
             </button>
@@ -99,7 +99,7 @@ export default function LoginPage() {
             <span className="text-gray-600">Don't have an account? </span>
             <button
               onClick={() => navigate('/signup')}
-              className="text-orange-600 hover:text-orange-700 font-semibold"
+              className="text-blue-600 hover:text-blue-700 font-semibold"
             >
               Sign up
             </button>
