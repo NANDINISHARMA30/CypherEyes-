@@ -60,34 +60,49 @@ CypherEyes solves these challenges using a dual-layer hybrid pipeline that is ro
 🌟 Key Novelties
 
 ✔ Dual-layer hybrid pipeline (signature + supervised + unsupervised)
+
 ✔ Zero-day detection using AI-based anomaly models
+
 ✔ Significantly reduced false positives
+
 ✔ Full XAI transparency with SHAP
+
 ✔ Real-time processing architecture
+
 ✔ Scalable for enterprise networks
 
 🖥️ Deliverables
 
 CypherEyes includes:
+
 🔹 Real-time Web Dashboard
 
 Displays:
+
 Alerts
 
 Anomaly trends
+
 Zero-day insights
+
 SHAP explanations
+
 User behavior analytics
 
 🔹 Backend REST API
 
 Handles:
+
 Signature matching
+
 ML inference
+
 Live flow streaming
 
 🔹 ML Pipeline
 
 Data preprocessing
+
 Ensemble inference
+
 XAI reasoning
