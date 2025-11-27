@@ -1,0 +1,39 @@
+# Hybrid IDS Requirements
+# Two-Stage Bagging Ensemble with XAI
+# Compatible versions to avoid dependency conflicts
+
+# Core ML Libraries
+numpy>=1.24.0,<2.0.0  # Compatible with mediapipe and other packages
+pandas>=2.0.0,<3.0.0
+scikit-learn>=1.3.0,<2.0.0
+
+# Deep Learning (PyTorch for Autoencoder)
+# Use versions compatible with your system
+torch>=2.0.0  # Will install compatible version
+# torchvision - will be installed with torch
+
+# Gradient Boosting
+xgboost>=1.7.0,<3.0.0
+
+# Explainability - use older version for stability
+shap>=0.41.0,<0.43.0
+
+# Visualization
+matplotlib>=3.7.0,<4.0.0
+seaborn>=0.12.0,<1.0.0
+
+# Model Persistence
+joblib>=1.3.0
+
+# Progress Bars
+tqdm>=4.65.0
+
+# Jupyter Notebook Support (optional)
+# jupyter>=1.0.0
+# ipykernel>=6.25.0
+# ipywidgets>=8.1.0
+
+# Additional dependencies for SHAP
+numba>=0.56.0
+cloudpickle>=2.0.0
+slicer>=0.0.7
